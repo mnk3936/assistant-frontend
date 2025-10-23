@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
 
 const Chat = () => {
   const [message, setMessage] = useState('')
@@ -13,6 +17,11 @@ const Chat = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  useEffect(() => {
+    toast.success("Welcome, testing something!");
+  }, []);
+
 
   // Helper functions
   const addMessage = (text, sender) => {
@@ -31,6 +40,7 @@ const Chat = () => {
 
   // ✅ Fixed handleSend
   async function handleSend() {
+
     const trimmed = message.trim()
     if (!trimmed) return
 
@@ -60,12 +70,12 @@ const Chat = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-100 to-purple-100 p-6">
       <div className="w-full max-w-2xl">
         <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl p-6 border border-gray-200 flex flex-col h-[80vh]">
-          <button
+          {/* <button
             onClick={() => navigate('/')}
             className="absolute top-6 left-6 w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center shadow-lg transition"
           >
             <ArrowLeft className="w-5 h-5 text-gray-800" />
-          </button>
+          </button> */}
 
           {/* Header */}
           <div className="text-center mb-6">
@@ -76,10 +86,10 @@ const Chat = () => {
           <div className="flex-1 bg-gray-50 rounded-xl p-4 overflow-y-auto mb-4">
             <div className="text-center mt-4">
               <h1 className="text-lg font-semibold text-black-200">
-                Hello {username},
+                Hello 
               </h1>
               <h2 className="text-sm text-gray-400">
-                Welcome back to the chat!
+                Welcome  to Testing
               </h2>
             </div>
 
@@ -95,16 +105,14 @@ const Chat = () => {
               {messages.map((msg, index) => (
                 <div
                   key={index}
-                  className={`flex ${
-                    msg.sender === 'user' ? 'justify-end' : 'justify-start'
-                  }`}
+                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'
+                    }`}
                 >
                   <div
-                    className={`px-4 py-2 rounded-xl max-w-xs break-words ${
-                      msg.sender === 'user'
+                    className={`px-4 py-2 rounded-xl max-w-xs break-words ${msg.sender === 'user'
                         ? 'bg-gradient-to-r from-green-300 to-green-300 text-gray-800'
                         : 'bg-white/70 text-gray-700'
-                    }`}
+                      }`}
                   >
                     {msg.text}
                   </div>
@@ -135,7 +143,10 @@ const Chat = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={3000} />
+
     </div>
+
   )
 }
 
