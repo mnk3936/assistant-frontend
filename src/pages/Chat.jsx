@@ -40,7 +40,7 @@ const Chat = () => {
     const loadingId = addTypingAnimation()
 
     try {
-      const response = await fetch('/api/process-data', {
+      const response = await fetch('http://167.235.241.103:8000/process-data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: trimmed }),

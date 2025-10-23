@@ -14,7 +14,7 @@ export default defineConfig({
         target: 'http://167.235.241.103:8000', // your backend URL
         changeOrigin: true,
         secure: false, // because backend is HTTP, not HTTPS
-        rewrite: (path) => path.replace(/^\/api/, ''), // optional, removes '/api' prefix
+        // rewrite: (path) => path.replace(/^\/api/, ''), // optional, removes '/api' prefix
       },
     },
   },
