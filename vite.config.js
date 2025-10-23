@@ -11,7 +11,7 @@ export default defineConfig({
     proxy: {
       // This will forward any request starting with /api to your backend
       '/api': {
-        target: 'http://167.235.241.103:8000', // your backend URL
+        target: 'https://a778157def32.ngrok-free.app', // your backend URL
         changeOrigin: true,
         secure: false, // because backend is HTTP, not HTTPS
         // rewrite: (path) => path.replace(/^\/api/, ''), // optional, removes '/api' prefix
